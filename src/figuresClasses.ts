@@ -32,7 +32,22 @@ export class Triangle implements Figure {
   }
 }
 
-export class Circle implements Figure {}
+export class Circle implements Figure {
+  shape: 'circle' = 'circle';
+
+  constructor(
+    public color: 'red' | 'green' | 'blue',
+    public radius: number,
+  ) {
+    if (this.radius <= 0) {
+      throw new Error(`The radius can't be a less zero`);
+    }
+  }
+
+  getArea(): number {
+    return Math.floor(Math.PI * Math.pow(this.radius, 2) * 100) / 100;
+  }
+}
 
 export class Rectangle implements Figure {}
 
