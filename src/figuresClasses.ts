@@ -28,7 +28,7 @@ export class Triangle implements Figure {
     const s = (this.a + this.b + this.c) / 2;
     const result = Math.sqrt(s * (s - this.a) * (s - this.b) * (s - this.c));
 
-    return result;
+    return +result.toFixed(2);
   }
 }
 
@@ -49,7 +49,25 @@ export class Circle implements Figure {
   }
 }
 
-export class Rectangle implements Figure {}
+export class Rectangle implements Figure {
+  shape: 'rectangle' = 'rectangle';
+
+  constructor(
+    public color: 'red' | 'green' | 'blue',
+    public width: number,
+    public height: number,
+  ) {
+    if (this.width <= 0 || this.height <= 0) {
+      throw new Error(`Error`);
+    }
+  }
+
+  getArea(): number {
+    const result = this.width * this.height;
+
+    return result;
+  }
+}
 
 export function getInfo(figure: Figure): string {
   return `A ${figure.color} ${figure.shape} - ${figure.getArea()}`;
