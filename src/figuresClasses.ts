@@ -14,12 +14,12 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
-      throw new Error(`These sides can not be a less than zero`);
+      throw new Error(`Side lengths must be greater than zero.`);
     }
 
     if (this.a + this.b <= this.c) {
       throw new Error(
-        `The sides ${this.a} and ${this.b} can not be less ${this.c}`,
+        `The sum of sides ${this.a} and ${this.b} must be greater than ${this.c}.`,
       );
     }
   }
@@ -40,7 +40,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (this.radius <= 0) {
-      throw new Error(`The radius can't be a less zero`);
+      throw new Error(`The radius must be greater than zero.`);
     }
   }
 
@@ -58,14 +58,14 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (this.width <= 0 || this.height <= 0) {
-      throw new Error(`Error`);
+      throw new Error(`Width and height must be greater than zero.`);
     }
   }
 
   getArea(): number {
     const result = this.width * this.height;
 
-    return result;
+    return +result.toFixed(2);
   }
 }
 
